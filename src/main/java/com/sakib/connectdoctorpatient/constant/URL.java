@@ -22,20 +22,4 @@ public interface URL {
     String EXPERTISE_URL = "/expertise";
     String EXPERTISE_LIST_URL = "/expertise/list";
     String SUCCESS_PAGE_URL = "/success";
-
-    String[] AUTHENTICATION_URLS = {
-            DASHBOARD_URL,
-            PATIENT_URL,
-            PATIENT_LIST_URL,
-            DOCTOR_URL,
-            DOCTOR_LIST_URL,
-            MEDICAL_HISTORY_URL,
-            MEDICAL_HISTORY_LIST_URL,
-            ISSUE_URL,
-            ISSUE_LIST_URL,
-            EXPERTISE_URL,
-            EXPERTISE_LIST_URL,
-            APPOINTMENT_URL,
-            APPOINTMENT_LIST_URL
-    };
 }
