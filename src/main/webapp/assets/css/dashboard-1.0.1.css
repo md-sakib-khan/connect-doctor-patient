@@ -1,0 +1,11 @@
+.dashboard-image-content {
+    margin: auto;
+    width: 80%;
+}
+
+.dashboard-image-row {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

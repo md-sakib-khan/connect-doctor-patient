@@ -1,0 +1,56 @@
+.login-section {
+    top: 115px;
+    background: transparent;
+    width: 65%;
+    height: 540px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 150px;
+    padding-top: 90px;
+    border : 2px solid;
+    border-radius: 0.8em;
+}
+
+.user-form-section {
+    background: transparent;
+    width: 50%;
+    min-height: 540px;
+    margin: 30px auto;
+    padding-bottom: 50px;
+    padding-top: 50px;
+    border : 2px solid;
+    border-radius: 0.8em;
+}
+
+.medical-history-form-section {
+    top: auto;
+    background: transparent;
+    width: 75%;
+    min-height: 540px;
+    margin: 30px auto;
+    padding-bottom: 50px;
+    padding-top: 50px;
+    border : 2px solid;
+    border-radius: 0.8em;
+}
+
+.image-content {
+    filter: blur(10px);
+    width: 68%;
+    margin: auto;
+    height: auto;
+}
+
+.form-image {
+    filter: blur(10px);
+    width: 50%;
+    margin: auto;
+    height: auto;
+    z-index: -1;
+}
+
+.custom-form-label {
+    font-size: 20px;
+    font-weight: bold;
+    padding-left: 0;
+}

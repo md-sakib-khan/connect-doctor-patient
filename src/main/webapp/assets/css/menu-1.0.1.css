@@ -1,0 +1,42 @@
+.menu {
+    z-index: 1;
+}
+
+.menu a {
+    background: white;
+    box-shadow: 0 5px #bbcae0;
+    color: black;
+    padding: 16px;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 2px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.menu a.active {
+    background-color: #002f4b;
+    color: white;
+}
+
+.menu a:hover:not(.active) {
+    background-color: #002f4b;
+    color: #ffffff;
+}
+
+@media screen and (max-width: 700px) {
+    .menu {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    .menu a {float: left;}
+    div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+    .menu a {
+        text-align: center;
+        float: none;
+    }
+}

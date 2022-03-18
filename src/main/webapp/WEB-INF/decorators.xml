@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<decorators>
+    <decorator name="patient-decorator" page="/WEB-INF/jsp/decorator.jsp">
+        <pattern>/*</pattern>
+    </decorator>
+</decorators>
