@@ -1,0 +1,60 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.bmuschko:gradle-tomcat-plugin:2.5'
+    }
+}
+
+
+plugins {
+    id 'war'
+    id 'java'
+    id 'com.bmuschko.tomcat' version '2.5'
+}
+
+group 'com.sakib'
+version '1.0.1'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework:spring-webmvc:5.3.16'
+    implementation 'org.hibernate:hibernate-core:5.6.5.Final'
+    implementation 'javax.validation:validation-api:2.0.1.Final'
+    implementation 'org.hibernate:hibernate-validator:6.0.13.Final'
+    implementation 'org.springframework:spring-orm:5.3.16'
+    implementation 'org.webjars:bootstrap:5.1.1'
+    implementation 'opensymphony:sitemesh:2.4.2'
+    implementation 'javax.servlet:jstl:1.2'
+    implementation 'org.projectlombok:lombok:1.18.22'
+    implementation 'mysql:mysql-connector-java:8.0.28'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+    compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
+
+
+    def tomcatVersion = '9.0.1'
+    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+            "org.apache.tomcat.embed:tomcat-embed-logging-juli:9.0.0.M6",
+            "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
+}
+
+war {
+    archiveName 'ROOT.war'
+}
+
+tomcat {
+    httpProtocol = 'org.apache.coyote.http11.Http11Nio2Protocol'
+    ajpProtocol  = 'org.apache.coyote.ajp.AjpNio2Protocol'
+}
+
+tomcat {
+    contextPath = '/'
+    httpPort = 8080
+    stopPort = 8191
+}
