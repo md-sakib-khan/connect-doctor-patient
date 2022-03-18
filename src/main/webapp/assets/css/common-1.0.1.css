@@ -1,0 +1,26 @@
+.error-section {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 25px;
+    padding-left: 0;
+}
+
+.error-message {
+    font-size: 12px;
+    color: red;
+    padding-left: 0;
+}
+
+.table td, .table th {
+    padding: 20px;
+}
+
+.table th {
+    text-align: center;
+}
+
+.item-row-color {
+    background-color: #e9f6ff;
+    color: #002f4b;
+    border: 5px solid #006559;
+}
