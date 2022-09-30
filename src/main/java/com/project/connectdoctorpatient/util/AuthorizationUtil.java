@@ -17,7 +17,7 @@ import static com.project.connectdoctorpatient.model.Role.*;
  */
 public final class AuthorizationUtil {
 
-    private AuthorizationUtil() throws IllegalAccessException {
+    private AuthorizationUtil() {
         throw new AssertionError("Utility Class Constructor Called.");
     }
 

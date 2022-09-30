@@ -8,7 +8,7 @@ import static com.project.connectdoctorpatient.constant.URL.REDIRECT;
  */
 public final class RedirectUtil {
 
-    private RedirectUtil() throws IllegalAccessException {
+    private RedirectUtil() {
         throw new AssertionError("Utility Class Constructor Called.");
     }
 

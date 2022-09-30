@@ -15,7 +15,7 @@ import static com.project.connectdoctorpatient.model.Role.GUEST;
  */
 public final class SessionUtil {
 
-    private SessionUtil() throws IllegalAccessException {
+    private SessionUtil() {
         throw new AssertionError("Utility Class Constructor Called.");
     }
 

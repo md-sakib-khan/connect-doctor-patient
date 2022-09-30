@@ -13,7 +13,7 @@ import static java.util.Objects.requireNonNull;
  */
 public final class RequestUtil {
 
-    private RequestUtil() throws IllegalAccessException {
+    private RequestUtil() {
         throw new AssertionError("Utility Class Constructor Called.");
     }
 
