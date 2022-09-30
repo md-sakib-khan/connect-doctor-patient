@@ -9,12 +9,12 @@
     </title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="<c:url value="/webjars/bootstrap/5.1.1/css/bootstrap.min.css"/>">
-    <link rel="stylesheet" href="<c:url value="/assets/css/index-1.0.1.css"/>">
-    <link rel="stylesheet" href="<c:url value="/assets/css/form-1.0.1.css"/>">
-    <link rel="stylesheet" href="<c:url value="/assets/css/common-1.0.1.css"/>">
-    <link rel="stylesheet" href="<c:url value="/assets/css/dashboard-1.0.1.css"/>">
-    <link rel="stylesheet" href="<c:url value="/assets/css/menu-1.0.1.css"/>">
-    <link rel="stylesheet" href="<c:url value="/assets/css/error-1.0.1.css"/>">
+    <link rel="stylesheet" href="/css/index-1.0.1.css">
+    <link rel="stylesheet" href="/css/form-1.0.1.css">
+    <link rel="stylesheet" href="/css/common-1.0.1.css">
+    <link rel="stylesheet" href="/css/dashboard-1.0.1.css">
+    <link rel="stylesheet" href="/css/menu-1.0.1.css">
+    <link rel="stylesheet" href="/css/error-1.0.1.css">
 </head>
 <body>
 <c:url var="dashboardUrl" value="/dashboard"/>
