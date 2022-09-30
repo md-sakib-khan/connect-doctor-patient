@@ -4,26 +4,30 @@ package com.project.connectdoctorpatient.constant;
  * @author sakib.khan
  * @since 2/26/22
  */
-public interface URL {
+public final class URL {
 
-    String REDIRECT = "redirect:";
-    String LOGIN_URL = "/login";
-    String DASHBOARD_URL = "/dashboard";
-    String PATIENT_URL = "/patient";
-    String PATIENT_LIST_URL = "/patient/list";
-    String DOCTOR_URL = "/doctor";
-    String DOCTOR_LIST_URL = "/doctor/list";
-    String MEDICAL_HISTORY_URL = "/medicalHistory";
-    String MEDICAL_HISTORY_LIST_URL = "/medicalHistory/list";
-    String ISSUE_URL = "/issue";
-    String ISSUE_LIST_URL = "/issue/list";
-    String APPOINTMENT_URL = "/appointment";
-    String APPOINTMENT_LIST_URL = "/appointment/list";
-    String EXPERTISE_URL = "/expertise";
-    String EXPERTISE_LIST_URL = "/expertise/list";
-    String SUCCESS_PAGE_URL = "/success";
+    private URL() {
+        throw new AssertionError("Utility Class Constructor Called.");
+    }
 
-    String[] AUTHENTICATION_URLS = {
+    public static final String REDIRECT = "redirect:";
+    public static final String LOGIN_URL = "/login";
+    public static final String DASHBOARD_URL = "/dashboard";
+    public static final String PATIENT_URL = "/patient";
+    public static final String PATIENT_LIST_URL = "/patient/list";
+    public static final String DOCTOR_URL = "/doctor";
+    public static final String DOCTOR_LIST_URL = "/doctor/list";
+    public static final String MEDICAL_HISTORY_URL = "/medicalHistory";
+    public static final String MEDICAL_HISTORY_LIST_URL = "/medicalHistory/list";
+    public static final String ISSUE_URL = "/issue";
+    public static final String ISSUE_LIST_URL = "/issue/list";
+    public static final String APPOINTMENT_URL = "/appointment";
+    public static final String APPOINTMENT_LIST_URL = "/appointment/list";
+    public static final String EXPERTISE_URL = "/expertise";
+    public static final String EXPERTISE_LIST_URL = "/expertise/list";
+    public static final String SUCCESS_PAGE_URL = "/success";
+
+    public static final String[] AUTHENTICATION_URLS = {
             DASHBOARD_URL,
             PATIENT_URL,
             PATIENT_LIST_URL,
