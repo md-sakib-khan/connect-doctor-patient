@@ -13,7 +13,11 @@ import static com.project.connectdoctorpatient.model.Role.GUEST;
  * @author sakib.khan
  * @since 3/5/22
  */
-public class SessionUtil {
+public final class SessionUtil {
+
+    private SessionUtil() throws IllegalAccessException {
+        throw new AssertionError("Utility Class Constructor Called.");
+    }
 
     public static HttpSession getSession() {
         return RequestUtil.getRequest().getSession();

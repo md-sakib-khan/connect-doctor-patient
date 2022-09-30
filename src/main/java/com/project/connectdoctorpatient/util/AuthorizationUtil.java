@@ -15,7 +15,11 @@ import static com.project.connectdoctorpatient.model.Role.*;
  * @author sakib.khan
  * @since 3/2/22
  */
-public class AuthorizationUtil {
+public final class AuthorizationUtil {
+
+    private AuthorizationUtil() throws IllegalAccessException {
+        throw new AssertionError("Utility Class Constructor Called.");
+    }
 
     public static final Map<Role, List<Map<String, List<Action>>>> AUTHORIZATION_MAP =
             new HashMap<Role, List<Map<String, List<Action>>>>() {{
