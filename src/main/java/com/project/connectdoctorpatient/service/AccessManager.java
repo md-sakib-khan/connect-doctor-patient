@@ -1,12 +1,11 @@
 package com.project.connectdoctorpatient.service;
 
 import com.project.connectdoctorpatient.exception.AccessDeniedException;
+import com.project.connectdoctorpatient.model.Action;
+import com.project.connectdoctorpatient.model.Role;
 import com.project.connectdoctorpatient.util.AuthorizationUtil;
 import com.project.connectdoctorpatient.util.RequestUtil;
 import com.project.connectdoctorpatient.util.SessionUtil;
-import com.project.connectdoctorpatient.model.Action;
-import com.project.connectdoctorpatient.model.Role;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.stereotype.Service;
 
@@ -21,8 +20,11 @@ import java.util.Optional;
 @Service
 public class AccessManager {
 
-    @Autowired
-    private MessageSourceAccessor msa;
+    private final MessageSourceAccessor msa;
+
+    public AccessManager(MessageSourceAccessor msa) {
+        this.msa = msa;
+    }
 
     public void checkAccess(Action action) throws AccessDeniedException {
         String requestURI = RequestUtil.getRequestURI();

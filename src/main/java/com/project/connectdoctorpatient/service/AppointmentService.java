@@ -1,11 +1,10 @@
 package com.project.connectdoctorpatient.service;
 
 import com.project.connectdoctorpatient.dao.AppointmentDao;
+import com.project.connectdoctorpatient.model.Action;
 import com.project.connectdoctorpatient.model.Appointment;
 import com.project.connectdoctorpatient.model.Doctor;
-import com.project.connectdoctorpatient.model.Action;
 import com.project.connectdoctorpatient.model.Patient;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,8 +18,11 @@ import static com.project.connectdoctorpatient.model.Action.*;
 @Service
 public class AppointmentService {
 
-    @Autowired
-    private AppointmentDao appointmentDao;
+    private final AppointmentDao appointmentDao;
+
+    public AppointmentService(AppointmentDao appointmentDao) {
+        this.appointmentDao = appointmentDao;
+    }
 
     public Appointment findById(long id) {
         return appointmentDao.findById(id);

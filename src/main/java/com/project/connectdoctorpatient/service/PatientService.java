@@ -3,7 +3,6 @@ package com.project.connectdoctorpatient.service;
 import com.project.connectdoctorpatient.dao.PatientDao;
 import com.project.connectdoctorpatient.model.Action;
 import com.project.connectdoctorpatient.model.Patient;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,8 +16,11 @@ import static com.project.connectdoctorpatient.model.Action.*;
 @Service
 public class PatientService {
 
-    @Autowired
-    private PatientDao patientDao;
+    private final PatientDao patientDao;
+
+    public PatientService(PatientDao patientDao) {
+        this.patientDao = patientDao;
+    }
 
     public Patient findById(long id) {
         return patientDao.findById(id);

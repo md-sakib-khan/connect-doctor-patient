@@ -5,7 +5,6 @@ import com.project.connectdoctorpatient.model.Action;
 import com.project.connectdoctorpatient.model.Doctor;
 import com.project.connectdoctorpatient.model.Expertise;
 import com.project.connectdoctorpatient.util.SessionUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,11 +16,14 @@ import java.util.List;
 @Service
 public class ExpertiseService {
 
-    @Autowired
-    private ExpertiseDao expertiseDao;
+    private final ExpertiseDao expertiseDao;
 
-    @Autowired
-    private DoctorService doctorService;
+    private final DoctorService doctorService;
+
+    public ExpertiseService(ExpertiseDao expertiseDao, DoctorService doctorService) {
+        this.expertiseDao = expertiseDao;
+        this.doctorService = doctorService;
+    }
 
     public Expertise findById(long id) {
         return expertiseDao.findById(id);

@@ -11,7 +11,11 @@ import static java.util.Objects.requireNonNull;
  * @author sakib.khan
  * @since 3/5/22
  */
-public class RequestUtil {
+public final class RequestUtil {
+
+    private RequestUtil() throws IllegalAccessException {
+        throw new AssertionError("Utility Class Constructor Called.");
+    }
 
     public static HttpServletRequest getRequest() {
         return ((ServletRequestAttributes) requireNonNull(RequestContextHolder.getRequestAttributes()))

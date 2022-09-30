@@ -1,8 +1,7 @@
 package com.project.connectdoctorpatient.helper;
 
-import com.project.connectdoctorpatient.model.Gender;
 import com.project.connectdoctorpatient.model.Action;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.project.connectdoctorpatient.model.Gender;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.ModelMap;
@@ -17,8 +16,11 @@ import static com.project.connectdoctorpatient.model.Action.SAVE;
 @Component
 public class UserHelper {
 
-    @Autowired
-    private MessageSourceAccessor msa;
+    private final MessageSourceAccessor msa;
+
+    public UserHelper(MessageSourceAccessor msa) {
+        this.msa = msa;
+    }
 
     public void setupGenders(ModelMap model) {
         model.addAttribute("genders", Gender.values());

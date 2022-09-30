@@ -6,7 +6,6 @@ import com.project.connectdoctorpatient.service.AppointmentService;
 import com.project.connectdoctorpatient.service.DoctorService;
 import com.project.connectdoctorpatient.service.IssueService;
 import com.project.connectdoctorpatient.util.SessionUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.ModelMap;
@@ -25,17 +24,24 @@ import static com.project.connectdoctorpatient.model.Role.PATIENT;
 @Component
 public class AppointmentHelper {
 
-    @Autowired
-    private MessageSourceAccessor msa;
+    private final MessageSourceAccessor msa;
 
-    @Autowired
-    private DoctorService doctorServices;
+    private final DoctorService doctorServices;
 
-    @Autowired
-    private IssueService issueService;
+    private final IssueService issueService;
 
-    @Autowired
-    private AppointmentService appointmentService;
+    private final AppointmentService appointmentService;
+
+    public AppointmentHelper(MessageSourceAccessor msa,
+                             DoctorService doctorServices,
+                             IssueService issueService,
+                             AppointmentService appointmentService) {
+
+        this.msa = msa;
+        this.doctorServices = doctorServices;
+        this.issueService = issueService;
+        this.appointmentService = appointmentService;
+    }
 
     public void setupReferenceData(long issueId, long appointmentId, ModelMap model) {
         if (issueId != 0) {

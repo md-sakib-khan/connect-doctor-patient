@@ -3,7 +3,6 @@ package com.project.connectdoctorpatient.service;
 import com.project.connectdoctorpatient.dao.IssueDao;
 import com.project.connectdoctorpatient.model.*;
 import com.project.connectdoctorpatient.util.SessionUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,11 +16,14 @@ import static com.project.connectdoctorpatient.model.Role.DOCTOR;
 @Service
 public class IssueService {
 
-    @Autowired
-    private PatientService patientService;
+    private final PatientService patientService;
 
-    @Autowired
-    private IssueDao issueDao;
+    private final IssueDao issueDao;
+
+    public IssueService(PatientService patientService, IssueDao issueDao) {
+        this.patientService = patientService;
+        this.issueDao = issueDao;
+    }
 
     public Issue findById(long id) {
         return issueDao.findById(id);

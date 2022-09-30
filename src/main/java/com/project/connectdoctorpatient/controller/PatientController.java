@@ -8,7 +8,6 @@ import com.project.connectdoctorpatient.model.Patient;
 import com.project.connectdoctorpatient.service.AccessManager;
 import com.project.connectdoctorpatient.service.PatientService;
 import com.project.connectdoctorpatient.validator.PatientValidator;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -37,17 +36,24 @@ public class PatientController {
 
     private static final String VIEW_PAGE = "patient/patient";
 
-    @Autowired
-    private PatientService patientService;
+    private final PatientService patientService;
 
-    @Autowired
-    private PatientHelper patientHelper;
+    private final PatientHelper patientHelper;
 
-    @Autowired
-    private PatientValidator patientValidator;
+    private final PatientValidator patientValidator;
 
-    @Autowired
-    private AccessManager accessManager;
+    private final AccessManager accessManager;
+
+    public PatientController(PatientService patientService,
+                             PatientHelper patientHelper,
+                             PatientValidator patientValidator,
+                             AccessManager accessManager) {
+
+        this.patientService = patientService;
+        this.patientHelper = patientHelper;
+        this.patientValidator = patientValidator;
+        this.accessManager = accessManager;
+    }
 
     @InitBinder(PATIENT_CMD)
     public void initBinder(WebDataBinder binder) {

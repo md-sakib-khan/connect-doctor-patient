@@ -19,7 +19,11 @@ import static java.util.Objects.nonNull;
  * @author sakib.khan
  * @since 3/10/22
  */
-public class CriteriaUtil {
+public final class CriteriaUtil {
+
+    private CriteriaUtil() throws IllegalAccessException {
+        throw new AssertionError("Utility Class Constructor Called.");
+    }
 
     public static CriteriaQuery<Issue> createQueryForFindByPatentAndStatusAndStatement(CriteriaBuilder criteriaBuilder,
                                                                                        Patient patient,

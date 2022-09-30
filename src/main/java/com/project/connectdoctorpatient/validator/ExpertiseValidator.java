@@ -1,21 +1,20 @@
 package com.project.connectdoctorpatient.validator;
 
-import com.project.connectdoctorpatient.model.Doctor;
-import com.project.connectdoctorpatient.util.RequestUtil;
-import com.project.connectdoctorpatient.util.SessionUtil;
 import com.project.connectdoctorpatient.model.Action;
+import com.project.connectdoctorpatient.model.Doctor;
 import com.project.connectdoctorpatient.model.Expertise;
 import com.project.connectdoctorpatient.service.DoctorService;
 import com.project.connectdoctorpatient.service.ExpertiseService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.project.connectdoctorpatient.util.RequestUtil;
+import com.project.connectdoctorpatient.util.SessionUtil;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import static com.project.connectdoctorpatient.model.Action.*;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
-import static com.project.connectdoctorpatient.model.Action.*;
 
 /**
  * @author sakib.khan
@@ -24,14 +23,17 @@ import static com.project.connectdoctorpatient.model.Action.*;
 @Component
 public class ExpertiseValidator implements Validator {
 
-    @Autowired
-    private MessageSourceAccessor msa;
+    private final MessageSourceAccessor msa;
 
-    @Autowired
-    private ExpertiseService expertiseService;
+    private final ExpertiseService expertiseService;
 
-    @Autowired
-    private DoctorService doctorService;
+    private final DoctorService doctorService;
+
+    public ExpertiseValidator(MessageSourceAccessor msa, ExpertiseService expertiseService, DoctorService doctorService) {
+        this.msa = msa;
+        this.expertiseService = expertiseService;
+        this.doctorService = doctorService;
+    }
 
     @Override
     public boolean supports(Class<?> clazz) {

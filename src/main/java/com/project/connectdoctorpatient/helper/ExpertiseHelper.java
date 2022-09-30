@@ -4,7 +4,6 @@ import com.project.connectdoctorpatient.controller.ExpertiseController;
 import com.project.connectdoctorpatient.model.*;
 import com.project.connectdoctorpatient.service.ExpertiseService;
 import com.project.connectdoctorpatient.util.SessionUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.ModelMap;
@@ -19,11 +18,14 @@ import static com.project.connectdoctorpatient.model.Role.DOCTOR;
 @Component
 public class ExpertiseHelper {
 
-    @Autowired
-    private MessageSourceAccessor msa;
+    private final MessageSourceAccessor msa;
 
-    @Autowired
-    private ExpertiseService expertiseService;
+    private final ExpertiseService expertiseService;
+
+    public ExpertiseHelper(MessageSourceAccessor msa, ExpertiseService expertiseService) {
+        this.msa = msa;
+        this.expertiseService = expertiseService;
+    }
 
     public void setupReferenceData(long expertiseId, ModelMap model) {
         model.addAttribute(ExpertiseController.EXPERTISE_CMD, expertiseId == 0 ? new Expertise() : expertiseService.findById(expertiseId));

@@ -2,9 +2,8 @@ package com.project.connectdoctorpatient.service;
 
 import com.project.connectdoctorpatient.dto.LoginDTO;
 import com.project.connectdoctorpatient.exception.NotFoundException;
-import com.project.connectdoctorpatient.util.SessionUtil;
 import com.project.connectdoctorpatient.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.project.connectdoctorpatient.util.SessionUtil;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.stereotype.Service;
 
@@ -17,11 +16,14 @@ import static java.util.Objects.nonNull;
 @Service
 public class AuthenticationService {
 
-    @Autowired
-    private MessageSourceAccessor msa;
+    private final MessageSourceAccessor msa;
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    public AuthenticationService(MessageSourceAccessor msa, UserService userService) {
+        this.msa = msa;
+        this.userService = userService;
+    }
 
     public void authenticate(LoginDTO user) throws NotFoundException {
         User loggedUser = userService.findByCredentials(user);

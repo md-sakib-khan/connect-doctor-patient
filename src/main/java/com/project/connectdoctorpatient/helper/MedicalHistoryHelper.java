@@ -6,7 +6,6 @@ import com.project.connectdoctorpatient.model.*;
 import com.project.connectdoctorpatient.service.MedicalHistoryService;
 import com.project.connectdoctorpatient.service.PatientService;
 import com.project.connectdoctorpatient.util.SessionUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.ModelMap;
@@ -25,14 +24,20 @@ import static com.project.connectdoctorpatient.model.Role.PATIENT;
 @Component
 public class MedicalHistoryHelper {
 
-    @Autowired
-    private MessageSourceAccessor msa;
+    private final MessageSourceAccessor msa;
 
-    @Autowired
-    private PatientService patientService;
+    private final PatientService patientService;
 
-    @Autowired
-    private MedicalHistoryService medicalHistoryService;
+    private final MedicalHistoryService medicalHistoryService;
+
+    public MedicalHistoryHelper(MessageSourceAccessor msa,
+                                PatientService patientService,
+                                MedicalHistoryService medicalHistoryService) {
+
+        this.msa = msa;
+        this.patientService = patientService;
+        this.medicalHistoryService = medicalHistoryService;
+    }
 
     public void setupReferenceData(long medicalHistoryId, ModelMap model) throws NotFoundException {
         model.addAttribute(MedialHistoryController.MEDICAL_HISTORY_CMD, getMedicalHistory(medicalHistoryId));
