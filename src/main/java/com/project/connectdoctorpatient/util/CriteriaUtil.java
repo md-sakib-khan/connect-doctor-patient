@@ -21,7 +21,7 @@ import static java.util.Objects.nonNull;
  */
 public final class CriteriaUtil {
 
-    private CriteriaUtil() throws IllegalAccessException {
+    private CriteriaUtil() {
         throw new AssertionError("Utility Class Constructor Called.");
     }
 
