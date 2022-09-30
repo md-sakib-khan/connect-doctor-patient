@@ -13,7 +13,7 @@
 <c:url var="loginUrl" value="/login"/>
 
 <div class="container">
-    <img class="image-content card-img-overlay" src="/assets/images/index.png" alt="Background">
+    <img class="image-content card-img-overlay" src="../../assets/images/index.png" alt="Background">
 
     <div class="card register-button-section">
         <div class="row">

@@ -1,13 +1,13 @@
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
     <persistence-unit name="persistence" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>com.sakib.connectdoctorpatient.model.User</class>
-        <class>com.sakib.connectdoctorpatient.model.Doctor</class>
-        <class>com.sakib.connectdoctorpatient.model.Patient</class>
-        <class>com.sakib.connectdoctorpatient.model.Appointment</class>
-        <class>com.sakib.connectdoctorpatient.model.Issue</class>
-        <class>com.sakib.connectdoctorpatient.model.Expertise</class>
-        <class>com.sakib.connectdoctorpatient.model.MedicalHistory</class>
+        <class>com.project.connectdoctorpatient.model.User</class>
+        <class>com.project.connectdoctorpatient.model.Doctor</class>
+        <class>com.project.connectdoctorpatient.model.Patient</class>
+        <class>com.project.connectdoctorpatient.model.Appointment</class>
+        <class>com.project.connectdoctorpatient.model.Issue</class>
+        <class>com.project.connectdoctorpatient.model.Expertise</class>
+        <class>com.project.connectdoctorpatient.model.MedicalHistory</class>
 
         <properties>
             <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>

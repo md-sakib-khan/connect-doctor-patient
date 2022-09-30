@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="container">
-    <img class="image-content card-img-overlay" src="/assets/images/index.png" alt="Background">
+    <img class="image-content card-img-overlay" src="../../assets/images/index.png" alt="Background">
 
     <div class="card login-section">
         <div class="row">
