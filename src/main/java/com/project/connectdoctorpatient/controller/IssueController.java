@@ -11,7 +11,6 @@ import com.project.connectdoctorpatient.helper.IssueHelper;
 import com.project.connectdoctorpatient.service.AccessManager;
 import com.project.connectdoctorpatient.service.IssueService;
 import com.project.connectdoctorpatient.validator.IssueValidator;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
@@ -45,17 +44,24 @@ public class IssueController {
     private static final String VIEW_PAGE = "issue/issue";
     private static final String LIST_PAGE = "issue/issueList";
 
-    @Autowired
-    private IssueService issueService;
+    private final IssueService issueService;
 
-    @Autowired
-    private IssueHelper issueHelper;
+    private final IssueHelper issueHelper;
 
-    @Autowired
-    private AccessManager accessManager;
+    private final AccessManager accessManager;
 
-    @Autowired
-    private IssueValidator issueValidator;
+    private final IssueValidator issueValidator;
+
+    public IssueController(IssueService issueService,
+                           IssueHelper issueHelper,
+                           AccessManager accessManager,
+                           IssueValidator issueValidator) {
+
+        this.issueService = issueService;
+        this.issueHelper = issueHelper;
+        this.accessManager = accessManager;
+        this.issueValidator = issueValidator;
+    }
 
     @InitBinder(ISSUE_CMD)
     public void initBinder(WebDataBinder binder) {

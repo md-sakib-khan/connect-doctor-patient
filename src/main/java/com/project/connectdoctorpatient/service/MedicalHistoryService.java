@@ -1,11 +1,10 @@
 package com.project.connectdoctorpatient.service;
 
 import com.project.connectdoctorpatient.dao.MedicalHistoryDao;
-import com.project.connectdoctorpatient.util.SessionUtil;
 import com.project.connectdoctorpatient.model.Action;
 import com.project.connectdoctorpatient.model.MedicalHistory;
 import com.project.connectdoctorpatient.model.Patient;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.project.connectdoctorpatient.util.SessionUtil;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,11 +16,14 @@ import java.util.List;
 @Service
 public class MedicalHistoryService {
 
-    @Autowired
-    private PatientService patientService;
+    private final PatientService patientService;
 
-    @Autowired
-    private MedicalHistoryDao medicalHistoryDao;
+    private final MedicalHistoryDao medicalHistoryDao;
+
+    public MedicalHistoryService(PatientService patientService, MedicalHistoryDao medicalHistoryDao) {
+        this.patientService = patientService;
+        this.medicalHistoryDao = medicalHistoryDao;
+    }
 
     public MedicalHistory findById(long id) {
         return medicalHistoryDao.findById(id);

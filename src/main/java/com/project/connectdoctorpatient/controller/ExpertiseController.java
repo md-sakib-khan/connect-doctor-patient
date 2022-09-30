@@ -8,7 +8,6 @@ import com.project.connectdoctorpatient.model.Expertise;
 import com.project.connectdoctorpatient.service.AccessManager;
 import com.project.connectdoctorpatient.service.ExpertiseService;
 import com.project.connectdoctorpatient.validator.ExpertiseValidator;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -38,17 +37,24 @@ public class ExpertiseController {
     private static final String VIEW_PAGE = "expertise/expertise";
     private static final String LIST_PAGE = "expertise/expertiseList";
 
-    @Autowired
-    private ExpertiseService expertiseService;
+    private final ExpertiseService expertiseService;
 
-    @Autowired
-    private ExpertiseHelper expertiseHelper;
+    private final ExpertiseHelper expertiseHelper;
 
-    @Autowired
-    private AccessManager accessManager;
+    private final AccessManager accessManager;
 
-    @Autowired
-    private ExpertiseValidator expertiseValidator;
+    private final ExpertiseValidator expertiseValidator;
+
+    public ExpertiseController(ExpertiseService expertiseService,
+                               ExpertiseHelper expertiseHelper,
+                               AccessManager accessManager,
+                               ExpertiseValidator expertiseValidator) {
+
+        this.expertiseService = expertiseService;
+        this.expertiseHelper = expertiseHelper;
+        this.accessManager = accessManager;
+        this.expertiseValidator = expertiseValidator;
+    }
 
     @InitBinder(EXPERTISE_CMD)
     public void initBinder(WebDataBinder binder) {

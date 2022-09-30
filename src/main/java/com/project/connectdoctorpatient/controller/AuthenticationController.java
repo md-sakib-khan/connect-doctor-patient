@@ -5,7 +5,6 @@ import com.project.connectdoctorpatient.util.RedirectUtil;
 import com.project.connectdoctorpatient.exception.NotFoundException;
 import com.project.connectdoctorpatient.helper.AuthenticationHelper;
 import com.project.connectdoctorpatient.service.AuthenticationService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -33,11 +32,16 @@ public class AuthenticationController {
 
     public static final String VIEW_PAGE = "login";
 
-    @Autowired
-    private AuthenticationHelper authenticationHelper;
+    private final AuthenticationHelper authenticationHelper;
 
-    @Autowired
-    private AuthenticationService authenticationService;
+    private final AuthenticationService authenticationService;
+
+    public AuthenticationController(AuthenticationHelper authenticationHelper,
+                                    AuthenticationService authenticationService) {
+
+        this.authenticationHelper = authenticationHelper;
+        this.authenticationService = authenticationService;
+    }
 
     @InitBinder(LOGIN_CMD)
     public void initBinder(WebDataBinder binder) {

@@ -4,7 +4,6 @@ import com.project.connectdoctorpatient.util.RequestUtil;
 import com.project.connectdoctorpatient.model.Action;
 import com.project.connectdoctorpatient.model.Patient;
 import com.project.connectdoctorpatient.service.PatientService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
@@ -21,11 +20,14 @@ import static com.project.connectdoctorpatient.model.Action.*;
 @Component
 public class PatientValidator implements Validator {
 
-    @Autowired
-    protected MessageSourceAccessor msa;
+    protected final MessageSourceAccessor msa;
 
-    @Autowired
-    private PatientService patientService;
+    private final PatientService patientService;
+
+    public PatientValidator(MessageSourceAccessor msa, PatientService patientService) {
+        this.msa = msa;
+        this.patientService = patientService;
+    }
 
     @Override
     public boolean supports(Class<?> clazz) {

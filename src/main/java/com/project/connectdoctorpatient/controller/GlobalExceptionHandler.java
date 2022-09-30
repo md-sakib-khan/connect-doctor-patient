@@ -1,6 +1,5 @@
 package com.project.connectdoctorpatient.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -17,8 +16,11 @@ public class GlobalExceptionHandler {
 
     private static final String VIEW_PAGE = "error/errorPage";
 
-    @Autowired
-    private MessageSourceAccessor msa;
+    private final MessageSourceAccessor msa;
+
+    public GlobalExceptionHandler(MessageSourceAccessor msa) {
+        this.msa = msa;
+    }
 
     @ExceptionHandler(Exception.class)
     public ModelAndView handle(Exception e) {

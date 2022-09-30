@@ -9,7 +9,6 @@ import com.project.connectdoctorpatient.exception.NotFoundException;
 import com.project.connectdoctorpatient.service.AccessManager;
 import com.project.connectdoctorpatient.service.MedicalHistoryService;
 import com.project.connectdoctorpatient.validator.MedicalHistoryValidator;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
@@ -43,17 +42,24 @@ public class MedialHistoryController {
     private static final String VIEW_PAGE = "medicalHistory/medicalHistory";
     private static final String LIST_PAGE = "medicalHistory/medicalHistoryList";
 
-    @Autowired
-    private MedicalHistoryService medicalHistoryService;
+    private final MedicalHistoryService medicalHistoryService;
 
-    @Autowired
-    private MedicalHistoryHelper medicalHistoryHelper;
+    private final MedicalHistoryHelper medicalHistoryHelper;
 
-    @Autowired
-    private AccessManager accessManager;
+    private final AccessManager accessManager;
 
-    @Autowired
-    private MedicalHistoryValidator medicalHistoryValidator;
+    private final MedicalHistoryValidator medicalHistoryValidator;
+
+    public MedialHistoryController(MedicalHistoryService medicalHistoryService,
+                                   MedicalHistoryHelper medicalHistoryHelper,
+                                   AccessManager accessManager,
+                                   MedicalHistoryValidator medicalHistoryValidator) {
+
+        this.medicalHistoryService = medicalHistoryService;
+        this.medicalHistoryHelper = medicalHistoryHelper;
+        this.accessManager = accessManager;
+        this.medicalHistoryValidator = medicalHistoryValidator;
+    }
 
     @InitBinder(MEDICAL_HISTORY_CMD)
     public void initBinder(WebDataBinder binder) {

@@ -3,19 +3,18 @@ package com.project.connectdoctorpatient.validator;
 import com.project.connectdoctorpatient.model.Action;
 import com.project.connectdoctorpatient.model.MedicalHistory;
 import com.project.connectdoctorpatient.model.Patient;
-import com.project.connectdoctorpatient.util.RequestUtil;
-import com.project.connectdoctorpatient.util.SessionUtil;
 import com.project.connectdoctorpatient.service.MedicalHistoryService;
 import com.project.connectdoctorpatient.service.PatientService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.project.connectdoctorpatient.util.RequestUtil;
+import com.project.connectdoctorpatient.util.SessionUtil;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import static com.project.connectdoctorpatient.model.Action.*;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
-import static com.project.connectdoctorpatient.model.Action.*;
 
 /**
  * @author sakib.khan
@@ -24,14 +23,20 @@ import static com.project.connectdoctorpatient.model.Action.*;
 @Component
 public class MedicalHistoryValidator implements Validator {
 
-    @Autowired
-    private MedicalHistoryService medicalHistoryService;
+    private final MedicalHistoryService medicalHistoryService;
 
-    @Autowired
-    private MessageSourceAccessor msa;
+    private final MessageSourceAccessor msa;
 
-    @Autowired
-    private PatientService patientService;
+    private final PatientService patientService;
+
+    public MedicalHistoryValidator(MedicalHistoryService medicalHistoryService,
+                                   MessageSourceAccessor msa,
+                                   PatientService patientService) {
+
+        this.medicalHistoryService = medicalHistoryService;
+        this.msa = msa;
+        this.patientService = patientService;
+    }
 
     @Override
     public boolean supports(Class<?> clazz) {

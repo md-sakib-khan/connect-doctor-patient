@@ -6,7 +6,6 @@ import com.project.connectdoctorpatient.model.*;
 import com.project.connectdoctorpatient.service.ExpertiseService;
 import com.project.connectdoctorpatient.service.IssueService;
 import com.project.connectdoctorpatient.util.SessionUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.ModelMap;
@@ -27,14 +26,20 @@ import static com.project.connectdoctorpatient.model.Role.PATIENT;
 @Component
 public class IssueHelper {
 
-    @Autowired
-    private MessageSourceAccessor msa;
+    private final MessageSourceAccessor msa;
 
-    @Autowired
-    private IssueService issueService;
+    private final IssueService issueService;
 
-    @Autowired
-    private ExpertiseService expertiseService;
+    private final ExpertiseService expertiseService;
+
+    public IssueHelper(MessageSourceAccessor msa,
+                       IssueService issueService,
+                       ExpertiseService expertiseService) {
+
+        this.msa = msa;
+        this.issueService = issueService;
+        this.expertiseService = expertiseService;
+    }
 
     public void setupReferenceData(long issueId, ModelMap model) throws NotFoundException {
         model.addAttribute(IssueController.ISSUE_CMD, getIssue(issueId));

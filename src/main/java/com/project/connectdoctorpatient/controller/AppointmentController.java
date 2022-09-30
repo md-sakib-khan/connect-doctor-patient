@@ -9,7 +9,6 @@ import com.project.connectdoctorpatient.model.Action;
 import com.project.connectdoctorpatient.service.AppointmentService;
 import com.project.connectdoctorpatient.service.AccessManager;
 import com.project.connectdoctorpatient.validator.AppointmentValidator;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
@@ -43,17 +42,24 @@ public class AppointmentController {
     private static final String VIEW_PAGE = "appointment/appointment";
     private static final String LIST_PAGE = "appointment/appointmentList";
 
-    @Autowired
-    private AccessManager accessManager;
+    private final AccessManager accessManager;
 
-    @Autowired
-    private AppointmentService appointmentService;
+    private final AppointmentService appointmentService;
 
-    @Autowired
-    private AppointmentHelper appointmentHelper;
+    private final AppointmentHelper appointmentHelper;
 
-    @Autowired
-    private AppointmentValidator appointmentValidator;
+    private final AppointmentValidator appointmentValidator;
+
+    public AppointmentController(AccessManager accessManager,
+                                 AppointmentService appointmentService,
+                                 AppointmentHelper appointmentHelper,
+                                 AppointmentValidator appointmentValidator) {
+
+        this.accessManager = accessManager;
+        this.appointmentService = appointmentService;
+        this.appointmentHelper = appointmentHelper;
+        this.appointmentValidator = appointmentValidator;
+    }
 
     @InitBinder(APPOINTMENT_CMD)
     public void initBinder(WebDataBinder binder) {

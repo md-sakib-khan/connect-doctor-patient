@@ -1,21 +1,20 @@
 package com.project.connectdoctorpatient.validator;
 
-import com.project.connectdoctorpatient.model.Issue;
-import com.project.connectdoctorpatient.util.RequestUtil;
-import com.project.connectdoctorpatient.util.SessionUtil;
 import com.project.connectdoctorpatient.model.Action;
+import com.project.connectdoctorpatient.model.Issue;
 import com.project.connectdoctorpatient.model.Patient;
 import com.project.connectdoctorpatient.service.IssueService;
 import com.project.connectdoctorpatient.service.PatientService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.project.connectdoctorpatient.util.RequestUtil;
+import com.project.connectdoctorpatient.util.SessionUtil;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import static com.project.connectdoctorpatient.model.Action.*;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
-import static com.project.connectdoctorpatient.model.Action.*;
 
 /**
  * @author sakib.khan
@@ -24,14 +23,17 @@ import static com.project.connectdoctorpatient.model.Action.*;
 @Component
 public class IssueValidator implements Validator {
 
-    @Autowired
-    private MessageSourceAccessor msa;
+    private final MessageSourceAccessor msa;
 
-    @Autowired
-    private IssueService issueService;
+    private final IssueService issueService;
 
-    @Autowired
-    private PatientService patientService;
+    private final PatientService patientService;
+
+    public IssueValidator(MessageSourceAccessor msa, IssueService issueService, PatientService patientService) {
+        this.msa = msa;
+        this.issueService = issueService;
+        this.patientService = patientService;
+    }
 
     @Override
     public boolean supports(Class<?> clazz) {
