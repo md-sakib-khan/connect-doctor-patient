@@ -2,9 +2,9 @@
 
 ## `Technologies Used`
 
-- Java 8
-- Spring Framework 5
-- Spring MVC
+- Java 8+
+- Spring Boot
+- Spring MVC.
 - Hibernate
 - JPA
 - MySQL
