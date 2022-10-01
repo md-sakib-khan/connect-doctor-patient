@@ -2,16 +2,11 @@ package com.project.connectdoctorpatient.service;
 
 import com.project.connectdoctorpatient.exception.AccessDeniedException;
 import com.project.connectdoctorpatient.model.Action;
-import com.project.connectdoctorpatient.model.Role;
-import com.project.connectdoctorpatient.util.AuthorizationUtil;
 import com.project.connectdoctorpatient.util.RequestUtil;
-import com.project.connectdoctorpatient.util.SessionUtil;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import static com.project.connectdoctorpatient.util.SessionUtil.getUserRole;
 
 /**
  * @author sakib.khan
@@ -28,14 +23,10 @@ public class AccessManager {
 
     public void checkAccess(Action action) throws AccessDeniedException {
         String requestURI = RequestUtil.getRequestURI();
-        Role userRole = SessionUtil.getUserRole();
 
-        Optional<Map<String, List<Action>>> authorizedUri = AuthorizationUtil.AUTHORIZATION_MAP.get(userRole)
+        boolean authorized = getUserRole().getPermissions()
                 .stream()
-                .filter(item -> item.containsKey(requestURI))
-                .findFirst();
-
-        boolean authorized = authorizedUri.isPresent() && authorizedUri.get().get(requestURI).contains(action);
+                .anyMatch(uriMap -> uriMap.containsKey(requestURI) && uriMap.get(requestURI).contains(action));
 
         if (!authorized) {
             throw new AccessDeniedException(msa.getMessage("exception.access.denied"));
