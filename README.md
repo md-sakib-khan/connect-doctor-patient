@@ -2,9 +2,8 @@
 
 ## `Technologies Used`
 
-- Java 8+
+- Java
 - Spring Boot
-- Spring MVC.
 - Hibernate
 - JPA
 - MySQL
@@ -12,7 +11,7 @@
 - Bootstrap
 - CSS
 
-## `Roles/ Users` :
+## `Roles / Users` :
 
 - Doctor 
 - Patient
