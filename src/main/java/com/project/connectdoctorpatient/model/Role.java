@@ -5,9 +5,6 @@ import java.util.Map;
 
 import static com.project.connectdoctorpatient.constant.URL.*;
 import static com.project.connectdoctorpatient.model.Action.*;
-import static java.util.Arrays.asList;
-import static java.util.Collections.singletonList;
-import static java.util.Collections.singletonMap;
 
 /**
  * @author sakib.khan
@@ -15,39 +12,39 @@ import static java.util.Collections.singletonMap;
  */
 public enum Role {
 
-    PATIENT("Patient", asList(
-            singletonMap(PATIENT_URL, asList(SHOW, UPDATE, DELETE)),
-            singletonMap(MEDICAL_HISTORY_URL, asList(SHOW, SAVE, UPDATE, DELETE)),
-            singletonMap(MEDICAL_HISTORY_LIST_URL, asList(SHOW, SAVE, UPDATE, DELETE)),
-            singletonMap(ISSUE_URL, asList(SHOW, SAVE, UPDATE, DELETE)),
-            singletonMap(ISSUE_LIST_URL, asList(SHOW, SAVE, UPDATE, DELETE)),
-            singletonMap(DOCTOR_URL, singletonList(SHOW)),
-            singletonMap(APPOINTMENT_URL, asList(SHOW, SAVE, UPDATE, DELETE)),
-            singletonMap(APPOINTMENT_LIST_URL, asList(SHOW, SAVE, UPDATE, DELETE)))
+    PATIENT("Patient", Map.of(
+            PATIENT_URL, List.of(SHOW, UPDATE, DELETE),
+            MEDICAL_HISTORY_URL, List.of(SHOW, SAVE, UPDATE, DELETE),
+            MEDICAL_HISTORY_LIST_URL, List.of(SHOW, SAVE, UPDATE, DELETE),
+            ISSUE_URL, List.of(SHOW, SAVE, UPDATE, DELETE),
+            ISSUE_LIST_URL, List.of(SHOW, SAVE, UPDATE, DELETE),
+            DOCTOR_URL, List.of(SHOW),
+            APPOINTMENT_URL, List.of(SHOW, SAVE, UPDATE, DELETE),
+            APPOINTMENT_LIST_URL, List.of(SHOW, SAVE, UPDATE, DELETE))
     ),
 
-    DOCTOR("Doctor", asList(
-            singletonMap(DOCTOR_URL, asList(SHOW, UPDATE, DELETE)),
-            singletonMap(MEDICAL_HISTORY_URL, singletonList(SHOW)),
-            singletonMap(MEDICAL_HISTORY_LIST_URL, singletonList(SHOW)),
-            singletonMap(ISSUE_URL, asList(SHOW, UPDATE)),
-            singletonMap(ISSUE_LIST_URL, singletonList(SHOW)),
-            singletonMap(EXPERTISE_URL, asList(SHOW, SAVE, UPDATE, DELETE)),
-            singletonMap(EXPERTISE_LIST_URL, asList(SHOW, SAVE, UPDATE, DELETE)),
-            singletonMap(PATIENT_URL, singletonList(SHOW)),
-            singletonMap(APPOINTMENT_URL, asList(SHOW, SAVE, UPDATE, DELETE)),
-            singletonMap(APPOINTMENT_LIST_URL, asList(SHOW, SAVE, UPDATE, DELETE)))
+    DOCTOR("Doctor", Map.of(
+            DOCTOR_URL, List.of(SHOW, UPDATE, DELETE),
+            MEDICAL_HISTORY_URL, List.of(SHOW),
+            MEDICAL_HISTORY_LIST_URL, List.of(SHOW),
+            ISSUE_URL, List.of(SHOW, UPDATE),
+            ISSUE_LIST_URL, List.of(SHOW),
+            EXPERTISE_URL, List.of(SHOW, SAVE, UPDATE, DELETE),
+            EXPERTISE_LIST_URL, List.of(SHOW, SAVE, UPDATE, DELETE),
+            PATIENT_URL, List.of(SHOW),
+            APPOINTMENT_URL, List.of(SHOW, SAVE, UPDATE, DELETE),
+            APPOINTMENT_LIST_URL, List.of(SHOW, SAVE, UPDATE, DELETE))
     ),
 
-    GUEST("Guest", asList(
-            singletonMap(PATIENT_URL, asList(SHOW, SAVE)),
-            singletonMap(DOCTOR_URL, asList(SHOW, SAVE)))
+    GUEST("Guest", Map.of(
+            PATIENT_URL, List.of(SHOW, SAVE),
+            DOCTOR_URL, List.of(SHOW, SAVE))
     );
 
     private final String displayName;
-    private final List<Map<String, List<Action>>> permissions;
+    private final Map<String, List<Action>> permissions;
 
-    Role(String displayName, List<Map<String, List<Action>>> permissions) {
+    Role(String displayName, Map<String, List<Action>> permissions) {
         this.displayName = displayName;
         this.permissions = permissions;
     }
@@ -56,7 +53,7 @@ public enum Role {
         return displayName;
     }
 
-    public List<Map<String, List<Action>>> getPermissions() {
+    public Map<String, List<Action>> getPermissions() {
         return permissions;
     }
 }

@@ -7,7 +7,7 @@ plugins {
 
 group = 'net.therap'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
+sourceCompatibility = "1.9"
 
 configurations {
     compileOnly {
@@ -33,3 +33,4 @@ dependencies {
     runtimeOnly 'mysql:mysql-connector-java'
     annotationProcessor 'org.projectlombok:lombok'
 }
+targetCompatibility = JavaVersion.VERSION_1_9
