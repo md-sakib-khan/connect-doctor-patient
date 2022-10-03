@@ -6,6 +6,9 @@ import com.project.connectdoctorpatient.util.RequestUtil;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Map;
+
 import static com.project.connectdoctorpatient.util.SessionUtil.getUserRole;
 
 /**
@@ -23,10 +26,9 @@ public class AccessManager {
 
     public void checkAccess(Action action) throws AccessDeniedException {
         String requestURI = RequestUtil.getRequestURI();
+        Map<String, List<Action>> permissions = getUserRole().getPermissions();
 
-        boolean authorized = getUserRole().getPermissions()
-                .stream()
-                .anyMatch(uriMap -> uriMap.containsKey(requestURI) && uriMap.get(requestURI).contains(action));
+        boolean authorized = permissions.containsKey(requestURI) && permissions.get(requestURI).contains(action);
 
         if (!authorized) {
             throw new AccessDeniedException(msa.getMessage("exception.access.denied"));
