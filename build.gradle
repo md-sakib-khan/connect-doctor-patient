@@ -1,13 +1,13 @@
 plugins {
-    id 'org.springframework.boot' version '2.6.3'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'org.springframework.boot' version '2.7.18'
+    id 'io.spring.dependency-management' version '1.1.4'
     id 'java'
     id 'war'
 }
 
 group = 'net.therap'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = "1.9"
+sourceCompatibility = "17"
 
 configurations {
     compileOnly {
@@ -30,7 +30,6 @@ dependencies {
     implementation 'opensymphony:sitemesh:2.4.2'
     implementation 'javax.servlet:jstl:1.2'
     compileOnly 'org.projectlombok:lombok'
-    runtimeOnly 'mysql:mysql-connector-java'
+    runtimeOnly 'com.mysql:mysql-connector-j'
     annotationProcessor 'org.projectlombok:lombok'
 }
-targetCompatibility = JavaVersion.VERSION_1_9
